@@ -1,0 +1,73 @@
+"use client";
+
+import Image from "next/image";
+import NavBar from "./NavBar";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, PhoneIcon } from "lucide-react";
+import { logoHeight, logoWidth, logoConstant } from "@/lib/data/contants";
+import { useScrollDirection } from "@/customHooks/useScrollDirection";
+import MobileMenu from "./MobileMenu";
+import { logo } from "@/lib/data/imagesData";
+
+function Header() {
+  const isVisible = useScrollDirection();
+  return (
+    // <header className="sticky flex h-32  justify-center items-center top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
+    <header
+      className={`sticky px-3 py-4 flex  justify-center items-center top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      <div className="container flex    items-center justify-between">
+        {/* Left: Brand Logo */}
+        <div
+          className={`flex items-center gap-2 relative w-[calc(logoWidth * logoConstant)]  h-[calc(logoHeight * logoConstant)rem]`}
+        >
+          {/* <Image src={"/logo.png"} alt="" fill className="object-cover " /> */}
+          <Image
+            src={logo.url}
+            alt={logo.alt}
+            width={300}
+            height={100}
+            className="h-22 w-auto"
+          />
+        </div>
+        {/* Center: Desktop Navigation Links */}
+        <div className=" hidden lg:block">
+          <NavBar />
+        </div>
+        <div className="lg:hidden">
+          <Sheet>
+            <SheetTrigger>
+              <div className={buttonVariants()}>
+                <Menu />
+              </div>
+            </SheetTrigger>
+
+            <SheetContent side="right">{/* Mobile navigation */}</SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Right: Phone Number & Main CTA */}
+        <div className="hidden lg:flex items-center gap-4 ">
+          <a
+            href="tel:1234567890"
+            className="hidden sm:flex gap-1 font-semibold  items-center "
+          >
+            <PhoneIcon className="text-primary-light" fill="var(--primary)" />
+            <p className="text-primary-dark"> 123-456-7890</p>
+          </a>
+          <Button size="default" className="bg-secondary-foreground border ">
+            Get a Free Quote
+          </Button>
+
+          {/* Mobile Drawer Trigger */}
+          <Sheet>{/* Mobile links & call button */}</Sheet>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default Header;
