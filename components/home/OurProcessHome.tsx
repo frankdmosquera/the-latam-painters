@@ -8,6 +8,7 @@ import {
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { StepReveal } from "./StepReveal";
 
 const steps = [
   {
@@ -53,14 +54,13 @@ export function OurProcess() {
         <ol className="relative flex flex-col md:flex-row md:items-start gap-10 md:gap-6">
           {steps.map((step, i) => {
             const Icon = step.icon;
-            const isLast = i === steps.length - 1;
 
             return (
-              <li
+              <StepReveal
                 key={step.title}
-                className="bg-vivid-1 relative flex md:flex-1 flex-col items-start md:items-center gap-4 bg-card-solid p-2 pt-4 rounded  shadow-md shadow-black/20"
+                index={i}
+                icon={<Icon className="size-6 text-primary-light" />}
               >
-                {/* ... */}
                 <span className="text-xs font-semibold text-white/80 md:hidden">
                   Step {i + 1}
                 </span>
@@ -73,7 +73,7 @@ export function OurProcess() {
                     {step.description}
                   </p>
                 </div>
-              </li>
+              </StepReveal>
             );
           })}
         </ol>

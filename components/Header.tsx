@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import MobileNav from "./MobileNav";
 import { Button } from "@/components/ui/button";
 import { PhoneIcon } from "lucide-react";
-import { useScrollDirection } from "@/customHooks/useScrollDirection";
+import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { logo } from "@/lib/data/imagesData";
 
 function Header() {
