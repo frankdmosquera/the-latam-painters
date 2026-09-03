@@ -38,12 +38,14 @@ const steps = [
 
 export function OurProcess() {
   return (
-    <section className="py-16 md:py-24 ">
+    <section className="py-24 md:py-32 ">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="font-medium  mx-auto max-w-2xl text-center mb-14 md:mb-20">
-          <p className="text-xl mb-2 ">Our Process</p>
-          <div className="">&</div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+        <div className="font-medium gap-2 flex flex-col  items-center mb-14 md:mb-20">
+          <p className="inline-block text-xl  bg-white p-1.5 rounded-br-lg">
+            Our Process
+          </p>
+          <div className="inline-block bg-white  p-1.5 rounded-es-3xl">&</div>
+          <h2 className="inline-block bg-white p-1.5 text-3xl md:text-4xl font-bold tracking-tight rounded-sm">
             How It Works, Start to Finish
           </h2>
         </div>

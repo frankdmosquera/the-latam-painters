@@ -28,11 +28,6 @@ export default function Home() {
       <GoogleReviewsCarousel2 />
       <OurProcess />
       <ProjectGalleryGrid projects={getProjects()} />
-      <div className="h-40 bg-black"></div>
-
-      <div className="relative h-[2000px] w-full overflow-hidden bg-white">
-        <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/25 blur-3xl" />
-      </div>
     </div>
   );
 }

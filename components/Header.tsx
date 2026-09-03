@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import NavBar from "./NavBar";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, PhoneIcon } from "lucide-react";
-import { logoHeight, logoWidth, logoConstant } from "@/lib/data/contants";
+import MobileNav from "./MobileNav";
+import { Button } from "@/components/ui/button";
+import { PhoneIcon } from "lucide-react";
 import { useScrollDirection } from "@/customHooks/useScrollDirection";
-import MobileMenu from "./MobileMenu";
 import { logo } from "@/lib/data/imagesData";
 
 function Header() {
@@ -34,20 +32,14 @@ function Header() {
           />
         </div>
         {/* Center: Desktop Navigation Links */}
-        <div className=" hidden lg:block">
-          <NavBar />
-        </div>
-        <div className="lg:hidden">
-          <Sheet>
-            <SheetTrigger>
-              <div className={buttonVariants()}>
-                <Menu />
-              </div>
-            </SheetTrigger>
-
-            <SheetContent side="right">{/* Mobile navigation */}</SheetContent>
-          </Sheet>
-        </div>
+        <>
+          <div className=" hidden lg:block">
+            <NavBar />
+          </div>
+          <div className="lg:hidden">
+            <MobileNav />
+          </div>
+        </>
 
         {/* Right: Phone Number & Main CTA */}
         <div className="hidden lg:flex items-center gap-4 ">
@@ -61,9 +53,6 @@ function Header() {
           <Button size="default" className="bg-secondary-foreground border ">
             Get a Free Quote
           </Button>
-
-          {/* Mobile Drawer Trigger */}
-          <Sheet>{/* Mobile links & call button */}</Sheet>
         </div>
       </div>
     </header>

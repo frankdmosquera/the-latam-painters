@@ -100,7 +100,7 @@ export function ImageGalleryEfferdMansory({
 
   return (
     <div className="relative flex w-full flex-col items-center justify-center px-4 py-10">
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-2  sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {columns.map((column, col) => (
           <div className="grid gap-4" key={col}>
             {column.map(({ image, index }) => {
