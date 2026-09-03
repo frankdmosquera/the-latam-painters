@@ -1,22 +1,14 @@
-"use client";
-
 import Image from "next/image";
 import NavBar from "./NavBar";
 import MobileNav from "./MobileNav";
 import { Button } from "@/components/ui/button";
 import { PhoneIcon } from "lucide-react";
-import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { logo } from "@/lib/data/imagesData";
+import { HeaderScrollHider } from "./HeaderScrollHider";
 
 function Header() {
-  const isVisible = useScrollDirection();
   return (
-    // <header className="sticky flex h-32  justify-center items-center top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
-    <header
-      className={`sticky px-3 py-4 flex  justify-center items-center top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
+    <HeaderScrollHider>
       <div className="container flex    items-center justify-between">
         {/* Left: Brand Logo */}
         <div
@@ -55,7 +47,7 @@ function Header() {
           </Button>
         </div>
       </div>
-    </header>
+    </HeaderScrollHider>
   );
 }
 

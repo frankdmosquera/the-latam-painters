@@ -1,8 +1,7 @@
-"use client";
-
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { GalleryImage } from "./gallery-image";
+import { ProjectCardOpenButton } from "./project-card-open-button";
 import type { Project } from "@/lib/types";
 
 const cardClassName =
@@ -57,12 +56,12 @@ export function ProjectCard({ project, onOpen, href }: ProjectCardProps) {
   }
 
   return (
-    <button
-      type="button"
-      onClick={() => onOpen?.(project)}
+    <ProjectCardOpenButton
+      project={project}
+      onOpen={onOpen}
       className={cardClassName}
     >
       <ProjectCardBody project={project} />
-    </button>
+    </ProjectCardOpenButton>
   );
 }

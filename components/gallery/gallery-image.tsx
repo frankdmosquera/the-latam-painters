@@ -1,5 +1,3 @@
-"use client";
-
 import { Image as IKImage } from "@imagekit/next";
 
 type GalleryImageProps = {
