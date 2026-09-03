@@ -13,6 +13,7 @@ import {
 import { ProjectCard } from "./project-card";
 import { ProjectGalleryDialog } from "./project-gallery-dialog";
 import { getPaginationRange, ELLIPSIS } from "@/lib/pagination";
+import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/types";
 
 const PAGE_SIZE = 4;
@@ -61,60 +62,72 @@ export function ProjectGalleryGrid({
       </div>
 
       {pageCount > 1 && (
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage((p) => Math.max(1, p - 1));
-                }}
-                aria-disabled={page === 1}
-                className={
-                  page === 1 ? "pointer-events-none opacity-50" : undefined
-                }
-              />
-            </PaginationItem>
+        <div className="relative mx-auto w-fit overflow-hidden rounded-full border border-white/10 bg-linear-to-br from-neutral-950 via-neutral-900 to-primary-dark/70 px-2 py-1.5 shadow-lg shadow-black/30">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-8 -right-8 size-24 rounded-full bg-primary/30 blur-2xl"
+          />
 
-            {paginationRange.map((item, index) =>
-              item === ELLIPSIS ? (
-                <PaginationItem key={`ellipsis-${index}`}>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              ) : (
-                <PaginationItem key={item}>
-                  <PaginationLink
-                    href="#"
-                    isActive={item === page}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setPage(item);
-                    }}
-                  >
-                    {item}
-                  </PaginationLink>
-                </PaginationItem>
-              ),
-            )}
+          <Pagination className="relative">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPage((p) => Math.max(1, p - 1));
+                  }}
+                  aria-disabled={page === 1}
+                  className={cn(
+                    "text-white/80 hover:bg-white/10 hover:text-white",
+                    page === 1 && "pointer-events-none opacity-40",
+                  )}
+                />
+              </PaginationItem>
 
-            <PaginationItem>
-              <PaginationNext
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage((p) => Math.min(pageCount, p + 1));
-                }}
-                aria-disabled={page === pageCount}
-                className={
-                  page === pageCount
-                    ? "pointer-events-none opacity-50"
-                    : undefined
-                }
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+              {paginationRange.map((item, index) =>
+                item === ELLIPSIS ? (
+                  <PaginationItem key={`ellipsis-${index}`}>
+                    <PaginationEllipsis className="text-white/40" />
+                  </PaginationItem>
+                ) : (
+                  <PaginationItem key={item}>
+                    <PaginationLink
+                      href="#"
+                      isActive={item === page}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setPage(item);
+                      }}
+                      className={
+                        item === page
+                          ? "border-transparent bg-primary text-primary-foreground hover:bg-primary"
+                          : "text-white/80 hover:bg-white/10 hover:text-white"
+                      }
+                    >
+                      {item}
+                    </PaginationLink>
+                  </PaginationItem>
+                ),
+              )}
+
+              <PaginationItem>
+                <PaginationNext
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPage((p) => Math.min(pageCount, p + 1));
+                  }}
+                  aria-disabled={page === pageCount}
+                  className={cn(
+                    "text-white/80 hover:bg-white/10 hover:text-white",
+                    page === pageCount && "pointer-events-none opacity-40",
+                  )}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
       )}
 
       <ProjectGalleryDialog
