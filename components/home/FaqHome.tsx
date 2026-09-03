@@ -9,7 +9,7 @@ import { faqs } from "@/lib/data/faqData";
 
 export function FaqSection() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="bg-services-bg py-24 md:py-32">
       <div className="mx-auto max-w-3xl px-4">
         <div className="mb-14 text-center md:mb-16">
           <p className="text-sm font-semibold tracking-widest text-primary uppercase">

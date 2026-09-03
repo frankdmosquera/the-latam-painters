@@ -25,8 +25,8 @@ export default function Home() {
       <ServiceSectionZoomIn />
       <GoogleReviewsCarousel2 />
       <OurProcess />
-      <FaqSection />
       <ProjectGalleryGrid projects={getProjects()} />
+      <FaqSection />
     </div>
   );
 }
