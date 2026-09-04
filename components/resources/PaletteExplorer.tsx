@@ -3,90 +3,74 @@
 import { useMemo, useState } from "react";
 import { CopySwatchButton } from "./CopySwatchButton";
 import { FilterPill } from "./FilterPill";
-import type {
-  ColourMood,
-  ColourPalette,
-} from "@/lib/data/colourInspirationData";
+import type { PaintBrand } from "@/lib/data/colourInspirationData";
 
-export function PaletteExplorer({
-  palettes,
-  moods,
-}: {
-  palettes: ColourPalette[];
-  moods: ColourMood[];
-}) {
-  const [activeMood, setActiveMood] = useState<ColourMood | "All">("All");
+export function PaletteExplorer({ brands }: { brands: PaintBrand[] }) {
+  const [activeBrand, setActiveBrand] = useState<string>("all");
 
   const filtered = useMemo(
     () =>
-      activeMood === "All"
-        ? palettes
-        : palettes.filter((palette) => palette.mood === activeMood),
-    [palettes, activeMood],
+      activeBrand === "all"
+        ? brands
+        : brands.filter((brand) => brand.slug === activeBrand),
+    [brands, activeBrand],
   );
 
   return (
     <div>
       <div className="flex flex-wrap justify-center gap-2">
         <FilterPill
-          label="All Palettes"
-          active={activeMood === "All"}
-          onClick={() => setActiveMood("All")}
+          label="All Brands"
+          active={activeBrand === "all"}
+          onClick={() => setActiveBrand("all")}
         />
-        {moods.map((mood) => (
+        {brands.map((brand) => (
           <FilterPill
-            key={mood}
-            label={mood}
-            active={activeMood === mood}
-            onClick={() => setActiveMood(mood)}
+            key={brand.slug}
+            label={brand.name}
+            active={activeBrand === brand.slug}
+            onClick={() => setActiveBrand(brand.slug)}
           />
         ))}
       </div>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2">
-        {filtered.map((palette) => (
-          <PaletteCard key={palette.slug} palette={palette} />
+      <div className="mt-10 flex flex-col gap-14">
+        {filtered.map((brand) => (
+          <div key={brand.slug}>
+            <div className="text-center">
+              <h3 className="text-xl font-bold tracking-tight text-foreground">
+                {brand.name}
+              </h3>
+              <p className="mx-auto mt-1 max-w-lg text-sm text-muted-foreground">
+                {brand.description}
+              </p>
+            </div>
+
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+              {brand.colors.map((color) => (
+                <div
+                  key={color.code}
+                  className="overflow-hidden rounded-xl bg-card ring-1 ring-foreground/10"
+                >
+                  <div
+                    style={{ backgroundColor: color.hex }}
+                    className="h-20 w-full"
+                  />
+                  <div className="flex flex-col gap-1 p-3">
+                    <p className="text-sm font-semibold text-foreground">
+                      {color.name}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      {color.code}
+                    </p>
+                    <CopySwatchButton hex={color.hex} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
-    </div>
-  );
-}
-
-function PaletteCard({ palette }: { palette: ColourPalette }) {
-  return (
-    <div className="rounded-2xl bg-card p-5 ring-1 ring-foreground/10 transition-shadow hover:shadow-lg md:p-6">
-      <div className="flex h-28 gap-1 overflow-hidden rounded-xl md:h-36">
-        {palette.swatches.map((swatch) => (
-          <div
-            key={swatch.role}
-            style={{ backgroundColor: swatch.hex }}
-            className="flex-1"
-          />
-        ))}
-      </div>
-
-      <div className="mt-4 flex items-start justify-between gap-3">
-        <div>
-          <h3 className="font-semibold text-foreground">{palette.name}</h3>
-          <p className="mt-0.5 text-sm text-muted-foreground">
-            {palette.description}
-          </p>
-        </div>
-        <span className="shrink-0 rounded-full border border-border px-2.5 py-1 text-xs font-medium text-muted-foreground">
-          {palette.mood}
-        </span>
-      </div>
-
-      <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5">
-        {palette.swatches.map((swatch) => (
-          <li key={swatch.role} className="flex flex-col gap-0.5">
-            <span className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
-              {swatch.role}
-            </span>
-            <CopySwatchButton hex={swatch.hex} />
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

@@ -50,7 +50,7 @@ export function ProjectGalleryGrid({
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="grid grid-cols-1 gap-6 min-[640px]:grid-cols-2">
+      <div className="grid grid-cols-2 gap-3 sm:gap-6">
         {visibleProjects.map((project) => (
           <ProjectCard
             key={project.slug}

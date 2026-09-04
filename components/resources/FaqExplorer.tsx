@@ -23,15 +23,22 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
         (category) =>
           activeCategory === "all" || category.slug === activeCategory,
       )
-      .map((category) => ({
-        ...category,
-        faqs: category.faqs.filter((faq) =>
-          normalizedQuery
-            ? faq.question.toLowerCase().includes(normalizedQuery) ||
-              faq.answer.toLowerCase().includes(normalizedQuery)
-            : true,
-        ),
-      }))
+      .map((category) => {
+        const categoryMatches = normalizedQuery
+          ? category.title.toLowerCase().includes(normalizedQuery)
+          : false;
+
+        return {
+          ...category,
+          faqs: category.faqs.filter((faq) =>
+            normalizedQuery
+              ? categoryMatches ||
+                faq.question.toLowerCase().includes(normalizedQuery) ||
+                faq.answer.toLowerCase().includes(normalizedQuery)
+              : true,
+          ),
+        };
+      })
       .filter((category) => category.faqs.length > 0);
   }, [categories, activeCategory, query]);
 
@@ -44,7 +51,7 @@ export function FaqExplorer({ categories }: { categories: FaqCategory[] }) {
     <div>
       <div className="mx-auto max-w-xl">
         <div className="relative">
-          <Search className="absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
             type="text"
             value={query}

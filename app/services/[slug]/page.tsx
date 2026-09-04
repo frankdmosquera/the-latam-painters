@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
@@ -68,22 +69,23 @@ export default async function ServicePage({ params }: ServicePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section
-        className={cn(
-          "relative overflow-hidden bg-linear-to-br px-4 py-20 md:py-28",
-          accent.gradient,
-        )}
-      >
+      <section className="relative overflow-hidden px-4 py-20 md:py-28">
+        <Image
+          src={`/images/services/${service.slug}.jpg`}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          className={cn(
+            "absolute inset-0 bg-linear-to-br opacity-75",
+            accent.gradient,
+          )}
+        />
         <div className="pointer-events-none absolute -top-16 -right-16 size-72 rounded-full bg-white/10 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -left-16 size-72 rounded-full bg-white/5 blur-3xl" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(135deg, white 0px, white 2px, transparent 2px, transparent 18px)",
-          }}
-        />
 
         <div className="relative mx-auto max-w-3xl text-center">
           <nav

@@ -132,7 +132,7 @@ export default function MobileNav() {
           </AnimatePresence>
         </nav>
 
-        <SheetFooter className="gap-3 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+2rem)]">
+        <SheetFooter className="gap-3 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+4rem)]">
           <a
             href="tel:1234567890"
             className="flex items-center justify-center gap-2 font-semibold text-primary-dark"

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
-const LOAD_BATCH = 6;
+const LOAD_BATCH = 3;
 
 export function ReviewsCarouselClient({
   featured,

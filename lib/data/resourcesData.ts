@@ -29,9 +29,9 @@ export const resources: Resource[] = [
   {
     slug: "colour-inspiration",
     title: "Colour Inspiration",
-    tagline: "Curated palettes for walls, trim, and ceilings that actually work together.",
+    tagline: "Real colors from the paint brands we actually use.",
     description:
-      "Browse palettes by mood — warm, cool, bold, or neutral — and copy the exact hex codes to bring to your estimate.",
+      "Popular Benjamin Moore, Sherwin-Williams, and Cloverdale Paint colors — copy the exact hex codes to bring to your estimate.",
     icon: Palette,
     accent: "vivid-5",
   },

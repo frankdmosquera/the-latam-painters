@@ -95,11 +95,6 @@ export const navigationItemsData2 = [
         href: "/resources/faq",
         description: "Answers to common questions about our services.",
       },
-      {
-        title: "Blog",
-        href: "/blog",
-        description: "Painting advice, ideas, and project inspiration.",
-      },
     ],
   },
 

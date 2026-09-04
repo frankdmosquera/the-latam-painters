@@ -3,7 +3,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ServiceHeroIcon } from "@/components/services/ServiceHeroIcon";
 import { PaletteExplorer } from "@/components/resources/PaletteExplorer";
-import { colourMoods, getColourPalettes } from "@/lib/data/colourInspirationData";
+import { getPaintBrands } from "@/lib/data/colourInspirationData";
 import { getResourceBySlug, getResources } from "@/lib/data/resourcesData";
 import { accentClasses } from "@/lib/data/serviceAccent";
 import { cn } from "@/lib/utils";
@@ -13,11 +13,11 @@ const resource = getResourceBySlug("colour-inspiration")!;
 export const metadata: Metadata = {
   title: "Colour Inspiration | The Latam Painters",
   description:
-    "Curated colour palettes for walls, trim, and ceilings, organized by mood — copy the exact hex codes to bring to your estimate.",
+    "Real colors from Benjamin Moore, Sherwin-Williams, and Cloverdale Paint — copy the exact hex codes to bring to your estimate.",
 };
 
 export default function ColourInspirationPage() {
-  const palettes = getColourPalettes();
+  const brands = getPaintBrands();
   const Icon = resource.icon;
   const accent = accentClasses[resource.accent];
 
@@ -77,16 +77,16 @@ export default function ColourInspirationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Browse by mood
+              Real colors, real brands
             </h2>
             <p className="mt-3 text-muted-foreground">
-              Every palette pairs a wall colour with trim, ceiling, and an
-              accent that already work together — tap a hex code to copy it.
+              Ten popular colors each from Benjamin Moore, Sherwin-Williams,
+              and Cloverdale Paint — tap a swatch to copy its hex code.
             </p>
           </div>
 
           <div className="mt-10">
-            <PaletteExplorer palettes={palettes} moods={colourMoods} />
+            <PaletteExplorer brands={brands} />
           </div>
         </div>
       </section>

@@ -15,7 +15,7 @@ export default function Home() {
       <HeroHome />
       {/* rest of contentent  */}
       <WhyUs />
-      <section className="py-16 md:py-24">
+      <section className="bg-services-bg py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4">
           <BeforeAfterSlider
             beforeImage="/images/home-hero-img.jpg"
