@@ -3,7 +3,11 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { ServiceHeroIcon } from "@/components/services/ServiceHeroIcon";
 import { PaletteExplorer } from "@/components/resources/PaletteExplorer";
-import { getPaintBrands } from "@/lib/data/colourInspirationData";
+import { CuratedPaletteSets } from "@/components/resources/CuratedPaletteSets";
+import {
+  getCuratedPaletteSets,
+  getPaintBrands,
+} from "@/lib/data/colourInspirationData";
 import { getResourceBySlug, getResources } from "@/lib/data/resourcesData";
 import { accentClasses } from "@/lib/data/serviceAccent";
 import { cn } from "@/lib/utils";
@@ -13,11 +17,12 @@ const resource = getResourceBySlug("colour-inspiration")!;
 export const metadata: Metadata = {
   title: "Colour Inspiration | The Latam Painters",
   description:
-    "Real colors from Benjamin Moore, Sherwin-Williams, and Cloverdale Paint — copy the exact hex codes to bring to your estimate.",
+    "Real, coordinated wall-trim-accent color sets from Benjamin Moore, Sherwin-Williams, and Cloverdale Paint — copy the exact hex codes to bring to your estimate.",
 };
 
 export default function ColourInspirationPage() {
   const brands = getPaintBrands();
+  const curatedSets = getCuratedPaletteSets();
   const Icon = resource.icon;
   const accent = accentClasses[resource.accent];
 
@@ -74,10 +79,29 @@ export default function ColourInspirationPage() {
       </section>
 
       <section className="px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              Coordinated Sets
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              Real wall, trim, and accent combinations sourced from each
+              brand&apos;s own color trend collections and published pairing
+              guidance — not guesswork.
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <CuratedPaletteSets sets={curatedSets} />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-services-bg px-4 py-16 md:py-24">
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Real colors, real brands
+              Browse Every Color
             </h2>
             <p className="mt-3 text-muted-foreground">
               Ten popular colors each from Benjamin Moore, Sherwin-Williams,
@@ -91,7 +115,7 @@ export default function ColourInspirationPage() {
         </div>
       </section>
 
-      <section className="bg-services-bg px-4 py-16 md:py-24">
+      <section className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-5xl text-center">
           <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
             More resources
