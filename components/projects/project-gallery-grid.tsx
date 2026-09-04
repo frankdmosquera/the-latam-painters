@@ -56,7 +56,7 @@ export function ProjectGalleryGrid({
             key={project.slug}
             project={project}
             onOpen={cardMode === "dialog" ? setActiveProject : undefined}
-            href={cardMode === "link" ? `/gallery/${project.slug}` : undefined}
+            href={cardMode === "link" ? `/projects/${project.slug}` : undefined}
           />
         ))}
       </div>

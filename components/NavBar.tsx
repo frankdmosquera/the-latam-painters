@@ -41,9 +41,10 @@ function NavBar() {
                 </NavigationMenuContent>
               </>
             ) : (
-              <NavigationMenuLink href={item.href} className="text-lg">
-                {item.title}
-              </NavigationMenuLink>
+              <NavigationMenuLink
+                className="text-lg"
+                render={<Link href={item.href ?? "/"}>{item.title}</Link>}
+              />
             )}
           </NavigationMenuItem>
         ))}

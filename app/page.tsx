@@ -1,4 +1,4 @@
-import { ProjectGalleryGrid } from "@/components/gallery/project-gallery-grid";
+import { ProjectGalleryGrid } from "@/components/projects/project-gallery-grid";
 
 import { getProjects } from "@/lib/projects";
 import GoogleReviewsCarousel2 from "@/components/GoogleReviewCarousel2";

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getProjects, getProjectBySlug } from "@/lib/projects";
-import { ProjectDetailView } from "@/components/gallery/project-detail-view";
+import { ProjectDetailView } from "@/components/projects/project-detail-view";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -45,10 +45,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <main className="mx-auto max-w-4xl px-4 py-12">
       <Link
-        href="/gallery"
+        href="/projects"
         className="text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
-        ← Back to gallery
+        ← Back to projects
       </Link>
 
       <h1 className="mt-4 text-3xl font-semibold text-foreground">

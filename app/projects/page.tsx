@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProjectGalleryGrid } from "@/components/gallery/project-gallery-grid";
+import { ProjectGalleryGrid } from "@/components/projects/project-gallery-grid";
 import { getProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {

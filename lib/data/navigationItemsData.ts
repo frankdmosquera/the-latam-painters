@@ -50,22 +50,22 @@ export const navigationItemsData2 = [
     items: [
       {
         title: "Recent Work",
-        href: "/projects/recent",
+        href: "/projects",
         description: "Explore some of our latest completed projects.",
       },
       {
         title: "Before & After",
-        href: "/projects/before-and-after",
+        href: "/projects",
         description: "See the transformation from start to finish.",
       },
       {
         title: "Living Rooms",
-        href: "/projects/living-rooms",
+        href: "/projects",
         description: "Browse completed living room transformations.",
       },
       {
         title: "Kitchens",
-        href: "/projects/kitchens",
+        href: "/projects",
         description: "Explore painted kitchens and cabinet projects.",
       },
     ],
