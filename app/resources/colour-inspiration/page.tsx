@@ -87,7 +87,8 @@ export default function ColourInspirationPage() {
             <p className="mt-3 text-muted-foreground">
               Real wall, trim, and accent combinations sourced from each
               brand&apos;s own color trend collections and published pairing
-              guidance — not guesswork.
+              guidance — not guesswork. Already know a color you like? Search
+              by wall, trim, or accent below to see every theme it appears in.
             </p>
           </div>
 
