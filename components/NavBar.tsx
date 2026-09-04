@@ -67,6 +67,7 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink
         className="className"
+        closeOnClick
         render={
           <Link href={href}>
             <div className="flex flex-col gap-1 ">
