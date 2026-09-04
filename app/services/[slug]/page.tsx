@@ -75,6 +75,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
         )}
       >
         <div className="pointer-events-none absolute -top-16 -right-16 size-72 rounded-full bg-white/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-16 size-72 rounded-full bg-white/5 blur-3xl" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(135deg, white 0px, white 2px, transparent 2px, transparent 18px)",
+          }}
+        />
 
         <div className="relative mx-auto max-w-3xl text-center">
           <nav

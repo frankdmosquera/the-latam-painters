@@ -15,17 +15,25 @@ export default function Home() {
       <HeroHome />
       {/* rest of contentent  */}
       <WhyUs />
-      <BeforeAfterSlider
-        beforeImage="/images/home-hero-img.jpg"
-        afterImage="/images/home-hero-img-after2.png"
-        beforeLabel="Before"
-        afterLabel="After"
-        aspectClassName="aspect-[16/10]"
-      />
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4">
+          <BeforeAfterSlider
+            beforeImage="/images/home-hero-img.jpg"
+            afterImage="/images/home-hero-img-after2.png"
+            beforeLabel="Before"
+            afterLabel="After"
+            aspectClassName="aspect-[16/10]"
+          />
+        </div>
+      </section>
       <ServiceSectionZoomIn />
       <GoogleReviewsCarousel2 />
       <OurProcess />
-      <ProjectGalleryGrid projects={getProjects()} />
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-4">
+          <ProjectGalleryGrid projects={getProjects()} />
+        </div>
+      </section>
       <FaqSection />
     </div>
   );

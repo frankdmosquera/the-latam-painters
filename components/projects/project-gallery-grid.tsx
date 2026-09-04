@@ -50,7 +50,7 @@ export function ProjectGalleryGrid({
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="grid grid-cols-1 gap-6 min-[640px]:grid-cols-2 min-[970px]:grid-cols-1">
+      <div className="grid grid-cols-1 gap-6 min-[640px]:grid-cols-2">
         {visibleProjects.map((project) => (
           <ProjectCard
             key={project.slug}
@@ -62,14 +62,14 @@ export function ProjectGalleryGrid({
       </div>
 
       {pageCount > 1 && (
-        <div className="relative mx-auto w-fit overflow-hidden rounded-full border border-white/10 bg-linear-to-br from-neutral-950 via-neutral-900 to-primary-dark/70 px-2 py-1.5 shadow-lg shadow-black/30">
+        <div className="relative mx-auto w-fit overflow-hidden rounded-full border border-white/10 bg-linear-to-br from-neutral-950 via-neutral-900 to-primary-dark/70 px-2.5 py-2 shadow-lg shadow-black/30">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-8 -right-8 size-24 rounded-full bg-primary/30 blur-2xl"
           />
 
           <Pagination className="relative">
-            <PaginationContent>
+            <PaginationContent className="gap-1">
               <PaginationItem>
                 <PaginationPrevious
                   href="#"
@@ -101,8 +101,8 @@ export function ProjectGalleryGrid({
                       }}
                       className={
                         item === page
-                          ? "border-transparent bg-primary text-primary-foreground hover:bg-primary"
-                          : "text-white/80 hover:bg-white/10 hover:text-white"
+                          ? "border-transparent bg-primary text-primary-foreground shadow-[0_0_0_3px_rgba(255,255,255,0.08)] hover:bg-primary"
+                          : "text-white/80 transition-colors hover:bg-white/10 hover:text-white"
                       }
                     >
                       {item}

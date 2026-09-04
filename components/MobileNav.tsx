@@ -55,7 +55,7 @@ export default function MobileNav() {
 
       <SheetContent
         side="right"
-        className="flex w-full flex-col gap-0 overflow-hidden p-0 sm:max-w-sm"
+        className="flex flex-col gap-0 overflow-hidden p-0 data-[side=right]:w-full data-[side=right]:sm:max-w-sm"
       >
         <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
 
@@ -132,7 +132,7 @@ export default function MobileNav() {
           </AnimatePresence>
         </nav>
 
-        <SheetFooter className="gap-3 border-t px-5 py-5">
+        <SheetFooter className="gap-3 border-t px-5 pt-5 pb-[calc(env(safe-area-inset-bottom)+2rem)]">
           <a
             href="tel:1234567890"
             className="flex items-center justify-center gap-2 font-semibold text-primary-dark"

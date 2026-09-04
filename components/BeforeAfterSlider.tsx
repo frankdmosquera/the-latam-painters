@@ -49,6 +49,7 @@ export function BeforeAfterSlider({
           src={afterImage}
           alt={afterAlt}
           fill
+          sizes="(min-width: 1024px) 1024px, 100vw"
           className="object-cover"
           draggable={false}
         />
@@ -63,6 +64,7 @@ export function BeforeAfterSlider({
           src={beforeImage}
           alt={beforeAlt}
           fill
+          sizes="(min-width: 1024px) 1024px, 100vw"
           className="object-cover"
           draggable={false}
         />

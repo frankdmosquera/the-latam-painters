@@ -19,7 +19,7 @@ export function StepReveal({
       initial={{ opacity: 0, scale: 0.5, rotateY: spinDirection * 130 }}
       whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
       viewport={{ once: true, amount: 0.4 }}
-      transition={{ type: "spring", stiffness: 110, damping: 14, delay }}
+      transition={{ type: "spring", stiffness: 55, damping: 16, delay }}
       whileHover={{ y: -6 }}
       style={{ transformPerspective: 1200 }}
       className="group relative flex md:flex-1 flex-col items-start md:items-center gap-4 overflow-hidden rounded-xl border border-white/10 bg-linear-to-br from-neutral-950 via-neutral-900 to-primary-dark/70 p-4 pt-5 shadow-lg shadow-black/40"
@@ -44,8 +44,8 @@ export function StepReveal({
           viewport={{ once: true, amount: 0.4 }}
           transition={{
             type: "spring",
-            stiffness: 260,
-            damping: 18,
+            stiffness: 140,
+            damping: 20,
             delay: delay + 0.25,
           }}
           className="flex size-12 items-center justify-center rounded-full bg-primary/15"

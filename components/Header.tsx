@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import NavBar from "./NavBar";
 import MobileNav from "./MobileNav";
 import { Button } from "@/components/ui/button";
@@ -11,18 +12,15 @@ function Header() {
     <HeaderScrollHider>
       <div className="container flex    items-center justify-between">
         {/* Left: Brand Logo */}
-        <div
-          className={`flex items-center gap-2 relative w-[calc(logoWidth * logoConstant)]  h-[calc(logoHeight * logoConstant)rem]`}
-        >
-          {/* <Image src={"/logo.png"} alt="" fill className="object-cover " /> */}
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src={logo.url}
             alt={logo.alt}
             width={300}
             height={100}
-            className="h-22 w-auto"
+            className="h-12 w-auto sm:h-14 md:h-16 lg:h-22"
           />
-        </div>
+        </Link>
         {/* Center: Desktop Navigation Links */}
         <>
           <div className=" hidden lg:block">
