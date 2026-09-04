@@ -209,10 +209,15 @@ export function CuratedPaletteSets({ sets }: { sets: CuratedPaletteSet[] }) {
                           {color.role}
                         </span>
                         <span className="text-sm text-foreground">
-                          {color.name}{" "}
-                          <span className="text-muted-foreground">
-                            {color.code}
-                          </span>
+                          {color.name}
+                          {color.code && (
+                            <>
+                              {" "}
+                              <span className="text-muted-foreground">
+                                {color.code}
+                              </span>
+                            </>
+                          )}
                         </span>
                       </div>
                       <CopySwatchButton hex={color.hex} />
