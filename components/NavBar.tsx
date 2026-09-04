@@ -5,10 +5,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { navigationItemsData2 } from "@/lib/data/navigationItemsData";
-import { cn } from "@/lib/utils";
 // import ListItem from "@/components/ListItem";
 import Link from "next/link";
 
@@ -66,7 +64,7 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink
-        className="className"
+        className={className}
         closeOnClick
         render={
           <Link href={href}>

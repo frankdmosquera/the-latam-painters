@@ -33,6 +33,8 @@ export function ProjectImageCarousel({
     // Jump straight to the clicked image, no slide animation on open —
     // `true` here is Embla's "jump" flag.
     api.scrollTo(initialIndex, true);
+    // Reading the Embla API's snapshot right after — external-system sync.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrent(api.selectedScrollSnap());
 
     const onSelect = () => setCurrent(api.selectedScrollSnap());

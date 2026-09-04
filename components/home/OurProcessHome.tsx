@@ -5,7 +5,7 @@ import {
   PaintRoller,
   CheckCircle2,
 } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { StepReveal } from "./StepReveal";

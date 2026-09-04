@@ -49,9 +49,11 @@ export function LazyImage({
     setIsLoading(false);
   }, []);
 
-  // Load image only when inView
+  // Load image only when inView — syncing from the IntersectionObserver
+  // signal `useInView` exposes, not state derived from props.
   React.useEffect(() => {
     if (inView && isInView && !imgSrc) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setImgSrc(src);
     }
   }, [inView, isInView, src, imgSrc]);

@@ -31,7 +31,6 @@ export function GalleryImage({
   const isAbsoluteUrl = /^https?:\/\//.test(src);
 
   if (isAbsoluteUrl || !IMAGEKIT_URL_ENDPOINT) {
-    // eslint-disable-next-line @next/next/no-img-element
     return (
       <img
         src={src}

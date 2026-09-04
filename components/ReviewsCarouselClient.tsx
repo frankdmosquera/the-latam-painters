@@ -36,6 +36,10 @@ export function ReviewsCarouselClient({
 
   useEffect(() => {
     if (!api) return;
+    // Reading the Embla API's current snapshot once it's ready, then
+    // subscribing to its own change events — external-system sync, not
+    // state derived from props/state.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap());
     api.on("select", () => onSelect(api));

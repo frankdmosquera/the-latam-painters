@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { PopupModal } from "react-calendly";
-import { buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -11,6 +10,9 @@ export function HeroCalendarImage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // PopupModal reads `document.body` as its rootElement, which doesn't
+    // exist during SSR — deferred to an effect so it only renders client-side.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
