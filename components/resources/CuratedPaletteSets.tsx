@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { X } from "lucide-react";
+import { ExternalLink, X } from "lucide-react";
 import { CopySwatchButton } from "./CopySwatchButton";
 import { FilterPill } from "./FilterPill";
 import type {
@@ -217,6 +217,17 @@ export function CuratedPaletteSets({ sets }: { sets: CuratedPaletteSet[] }) {
                                 {color.code}
                               </span>
                             </>
+                          )}
+                          {color.officialUrl && (
+                            <a
+                              href={color.officialUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`View ${color.name} on the brand's official site`}
+                              className="ml-1 inline-flex align-middle text-muted-foreground hover:text-primary"
+                            >
+                              <ExternalLink className="size-3" />
+                            </a>
                           )}
                         </span>
                       </div>
