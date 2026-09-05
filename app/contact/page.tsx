@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Clock, MapPin, PhoneIcon } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { CalendlyButton } from "@/components/CalendlyButton";
 
 export const metadata: Metadata = {
   title: "Contact Us | The Latam Painters",
@@ -29,6 +30,21 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <section id="booking" className="bg-services-bg px-4 py-16 md:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            Ready to book? Skip the back-and-forth.
+          </h2>
+          <p className="mt-3 text-muted-foreground">
+            Grab a time on our calendar directly — no waiting on a reply.
+            Prefer to ask a question first? The form below still works too.
+          </p>
+          <div className="mt-8">
+            <CalendlyButton />
+          </div>
+        </div>
+      </section>
+
       <section className="px-4 py-16 md:py-24">
         <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1fr_320px]">
           <ContactForm />
@@ -51,6 +67,15 @@ export default function ContactPage() {
                 <MapPin className="mt-0.5 size-4 shrink-0 text-primary" />
                 Calgary, AB and surrounding communities.
               </p>
+              <div className="mt-4 overflow-hidden rounded-lg border border-border">
+                <iframe
+                  title="The Latam Painters service area — Calgary, AB"
+                  src="https://maps.google.com/maps?q=Calgary,AB&z=10&output=embed"
+                  className="h-48 w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
 
             <div className="rounded-xl border border-border bg-card p-6">

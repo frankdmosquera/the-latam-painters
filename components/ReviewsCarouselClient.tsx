@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 
-const LOAD_BATCH = 3;
-
 export function ReviewsCarouselClient({
   featured,
   remaining,
@@ -26,7 +24,6 @@ export function ReviewsCarouselClient({
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(LOAD_BATCH);
   const [showAll, setShowAll] = useState(false);
 
   const onSelect = useCallback((api: CarouselApi) => {
@@ -88,18 +85,7 @@ export function ReviewsCarouselClient({
 
       {showAll && (
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {remaining.slice(0, visibleCount)}
-        </div>
-      )}
-
-      {showAll && visibleCount < remaining.length && (
-        <div className="mt-8 text-center">
-          <Button
-            variant="secondary"
-            onClick={() => setVisibleCount((v) => v + LOAD_BATCH)}
-          >
-            Load more reviews
-          </Button>
+          {remaining}
         </div>
       )}
     </>

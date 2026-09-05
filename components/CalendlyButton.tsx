@@ -38,7 +38,7 @@ export function CalendlyButton() {
       >
         <div>
           <Image
-            src={"/svgs/calendar-img-flat-bottom.svg"}
+            src={"/svgs/calendar-rounded-oklch-final.svg"}
             width={150}
             height={150}
             alt=""

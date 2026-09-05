@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Check } from "lucide-react";
+import { Check, PartyPopper, Printer } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChecklistGroup } from "@/lib/data/preparationData";
 
@@ -55,30 +55,54 @@ export function PreparationChecklist({
     });
   }
 
+  const isComplete = totalItems > 0 && completedItems === totalItems;
+
   return (
     <div>
       <div className="mx-auto max-w-xl">
-        <div className="flex items-center justify-between text-sm">
-          <span className="font-medium text-foreground">
-            {completedItems} of {totalItems} done
-          </span>
-          <span className="text-muted-foreground">{progress}%</span>
-        </div>
-        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted">
-          <div
-            className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-        {completedItems > 0 && (
+        {isComplete ? (
+          <div className="flex items-center gap-3 rounded-xl border border-primary/30 bg-primary/5 p-4">
+            <PartyPopper className="size-5 shrink-0 text-primary" />
+            <p className="text-sm font-medium text-foreground">
+              You&apos;re all set — see you on job day!
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className="flex items-center justify-between text-sm">
+              <span className="font-medium text-foreground">
+                {completedItems} of {totalItems} done
+              </span>
+              <span className="text-muted-foreground">{progress}%</span>
+            </div>
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted">
+              <div
+                className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </>
+        )}
+
+        <div className="mt-2 flex items-center gap-4 print:hidden">
+          {completedItems > 0 && (
+            <button
+              type="button"
+              onClick={() => setChecked(new Set())}
+              className="text-xs font-medium text-muted-foreground hover:text-foreground"
+            >
+              Reset checklist
+            </button>
+          )}
           <button
             type="button"
-            onClick={() => setChecked(new Set())}
-            className="mt-2 text-xs font-medium text-muted-foreground hover:text-foreground"
+            onClick={() => window.print()}
+            className="flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground"
           >
-            Reset checklist
+            <Printer className="size-3.5" />
+            Print checklist
           </button>
-        )}
+        </div>
       </div>
 
       <div className="mt-10 flex flex-col gap-8">
@@ -88,6 +112,9 @@ export function PreparationChecklist({
               <h2 className="text-xl font-bold tracking-tight text-foreground">
                 {group.title}
               </h2>
+              <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                {group.timing}
+              </span>
               <span className="h-px flex-1 bg-border" />
             </div>
 

@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, PaintRoller, Paintbrush, Droplet, Palette } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { OurProcess } from "@/components/home/OurProcessHome";
 import { ServiceHeroIcon } from "@/components/services/ServiceHeroIcon";
 import { ServiceFaq } from "@/components/services/ServiceFaq";
+import { SectionAccents } from "@/components/SectionAccents";
 import { getServices, getServiceBySlug } from "@/lib/data/servicesData";
 import { accentClasses } from "@/lib/data/serviceAccent";
 import { cn } from "@/lib/utils";
@@ -110,6 +111,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <ServiceHeroIcon
               icon={<Icon className="size-8 text-white" />}
               badgeClassName={accent.badge}
+              animation={accent.animation}
             />
           </div>
 
@@ -129,8 +131,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-3xl">
+      <section className="relative px-4 py-16 md:py-24">
+        <SectionAccents
+          icons={[
+            { icon: <Paintbrush className="h-full w-full" strokeWidth={1.25} />, position: "top-6 left-6 xl:left-16", size: "size-14", rotate: -10, duration: 6.5 },
+            { icon: <Droplet className="h-full w-full" strokeWidth={1.25} />, position: "bottom-20 left-14 xl:left-24", size: "size-8", rotate: 6, duration: 5, delay: 0.4 },
+            { icon: <PaintRoller className="h-full w-full" strokeWidth={1.25} />, position: "top-20 right-6 xl:right-16", size: "size-14", rotate: 14, duration: 7, delay: 0.2 },
+            { icon: <Palette className="h-full w-full" strokeWidth={1.25} />, position: "bottom-10 right-16 xl:right-28", size: "size-10", rotate: -8, duration: 5.5, delay: 0.7 },
+          ]}
+        />
+        <div className="relative mx-auto max-w-3xl">
           <p className="text-lg leading-relaxed text-foreground">
             {service.description}
           </p>
@@ -140,9 +150,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {service.included.map((item) => (
-              <li key={item} className="flex items-start gap-3">
+              <li
+                key={item}
+                className={cn(
+                  "flex items-start gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md hover:ring-1",
+                  accent.ring,
+                )}
+              >
                 <CheckCircle2
-                  className={cn("mt-1 size-5 shrink-0", accent.text)}
+                  className={cn("mt-0.5 size-5 shrink-0", accent.text)}
                 />
                 <span className="text-foreground">{item}</span>
               </li>

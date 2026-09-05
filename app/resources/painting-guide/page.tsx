@@ -63,6 +63,7 @@ export default function PaintingGuidePage() {
             <ServiceHeroIcon
               icon={<Icon className="size-8 text-white" />}
               badgeClassName={accent.badge}
+              animation={accent.animation}
             />
           </div>
 

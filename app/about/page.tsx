@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Handshake, ShieldCheck, Sparkles, MapPin } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { StepReveal } from "@/components/home/StepReveal";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -91,23 +90,25 @@ export default function AboutPage() {
           </div>
 
           <ol className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {values.map((value, i) => {
+            {values.map((value) => {
               const Icon = value.icon;
               return (
-                <StepReveal
+                <li
                   key={value.title}
-                  index={i}
-                  icon={<Icon className="size-6 text-primary-light" />}
+                  className="flex flex-col items-start gap-4 rounded-xl border border-border bg-card p-6 transition-shadow hover:shadow-md sm:items-center sm:text-center"
                 >
-                  <div className="md:text-center md:px-2">
-                    <h3 className="font-semibold leading-snug text-white">
+                  <span className="flex size-12 items-center justify-center rounded-full bg-primary/10">
+                    <Icon className="size-6 text-primary" />
+                  </span>
+                  <div>
+                    <h3 className="font-semibold leading-snug text-foreground">
                       {value.title}
                     </h3>
-                    <p className="mt-1 text-sm text-white/70 leading-relaxed">
+                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                       {value.description}
                     </p>
                   </div>
-                </StepReveal>
+                </li>
               );
             })}
           </ol>

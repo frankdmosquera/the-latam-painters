@@ -9,8 +9,11 @@ import { faqs } from "@/lib/data/faqData";
 
 export function FaqSection() {
   return (
-    <section className="bg-services-bg py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-4">
+    <section className="relative overflow-hidden bg-services-bg py-24 md:py-32">
+      <div className="pointer-events-none absolute top-1/3 -left-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+      <div className="pointer-events-none absolute top-1/3 -right-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+
+      <div className="relative mx-auto max-w-3xl px-4">
         <div className="mb-14 text-center md:mb-16">
           <p className="text-sm font-semibold tracking-widest text-primary uppercase">
             FAQ

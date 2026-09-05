@@ -168,6 +168,69 @@ export const resourcesFaqCategories: FaqCategory[] = [
       },
     ],
   },
+  {
+    slug: "warranty-guarantees",
+    title: "Warranty & Guarantees",
+    faqs: [
+      {
+        question: "Do you offer a warranty on your work?",
+        answer:
+          "Yes — every job comes with a workmanship warranty covering peeling, blistering, or uneven coverage caused by our application, not normal wear and tear.",
+      },
+      {
+        question: "What's not covered under warranty?",
+        answer:
+          "Damage from settling, moisture intrusion unrelated to our work, or wear from everyday use isn't covered — we'll always tell you plainly if something falls outside the warranty.",
+      },
+      {
+        question: "What if I notice an issue after the job is done?",
+        answer:
+          "Call us and we'll come take a look. If it's a workmanship issue, we fix it at no charge — no forms, no hassle.",
+      },
+    ],
+  },
+  {
+    slug: "scheduling-availability",
+    title: "Scheduling & Availability",
+    faqs: [
+      {
+        question: "What's your typical availability?",
+        answer:
+          "We book year-round for interiors and seasonally (late spring through early fall) for exteriors. Weekday starts are usually easier to schedule than weekends.",
+      },
+      {
+        question: "Can you accommodate a rush job?",
+        answer:
+          "Sometimes — it depends on our current schedule and the size of the job. Call us directly and we'll tell you honestly whether we can make it work.",
+      },
+      {
+        question: "Do you work weekends?",
+        answer:
+          "We can, for an adjusted rate. Most clients find a weekday start works fine since the job runs on our schedule, not yours, once it begins.",
+      },
+    ],
+  },
+  {
+    slug: "colour-selection",
+    title: "Colour Selection",
+    faqs: [
+      {
+        question: "I have no idea what colour to pick — can you help?",
+        answer:
+          "Yes, this comes up on almost every job. We'll talk through your lighting, existing furniture, and the mood you're going for, and narrow it down to a few solid options.",
+      },
+      {
+        question: "Can I see the colour on my actual wall before committing?",
+        answer:
+          "We recommend it — paint a small swatch directly on the wall and view it at different times of day before finalizing, since lighting changes how a colour reads dramatically.",
+      },
+      {
+        question: "Do you have a tool to help visualize colours?",
+        answer:
+          "Check out our Colour Inspiration page — it has real, coordinated wall/trim/accent sets from major paint brands you can browse and filter by brand.",
+      },
+    ],
+  },
 ];
 
 export function getResourcesFaqCategories() {
